@@ -17,7 +17,7 @@
 
 
 
-## [Problema C1. Comandament de televisió](https://jutge.org/problems/P12029_ca) <a name="C1"></a>
+## [<a name="C1">Problema C1. Comandament de televisió](https://jutge.org/problems/P12029_ca) </a>
 
 Observeu que en una solució òptima només s'utilitza un dels dos botons (perquè prémer una vegada cada botó és equivalent a no prémer res).
 
@@ -25,7 +25,7 @@ Si escollim el botó que baixa el volum, l'haurem de prémer tantes vegades com 
 
 <details>
   <summary><b>Codi (C++)</b></summary>
-
+  
 ```cpp
 #include <iostream>
 using namespace std;
@@ -38,6 +38,7 @@ int main() {
     }
 }
 ```
+
 </details>
 
 <details>
