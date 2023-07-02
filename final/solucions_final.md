@@ -24,7 +24,6 @@ Observeu que en una solució òptima només s'utilitza un dels dos botons (perqu
 Si escollim el botó que baixa el volum, l'haurem de prémer tantes vegades com el residu de dividir $x$ per $k$ (`x % k` en la majoria de llenguatges de programació). Si escollim el botó que puja el volum, l'haurem de prémer `k - (x % k)` vegades. Per tant, la solució serà el mínim d'aquests dos valors.
 
 <b>Codi (C++)</b>
-
 ```cpp
 #include <iostream>
 using namespace std;
@@ -39,7 +38,6 @@ int main() {
 ```
 
 <b>Codi (Python3)</b>
-
 ```python
 from easyinput import read
 x, k = read(int, int)
@@ -55,9 +53,7 @@ Per resoldre el problema, iterem per tots els nombres de 1 fins a 2023, calculan
 
 Per calcular la suma dels dígits es pot convertir l'enter a una 'string' (a C++ es faria amb `string s = to_string(x);`) o alternativament podem anar dividint el nombre per 10 fins que arribi a 0, tal i com es fa al següent codi:
 
-<details>
-  <summary><b>Codi (C++)</b></summary>
-
+<b>Codi (C++)</b>
 ```cpp
 #include<bits/stdc++.h>
 using namespace std;
@@ -81,7 +77,6 @@ int main() {
     cout << "La solució és: " << solucio << endl;
 }
 ```
-</details>
 
 ## [Problema G1. Silueta urbana](https://jutge.org/problems/P90013_ca)
 
@@ -91,9 +86,7 @@ Per llegir una llista `v` en ordre invers, ens podem ajudar de l'objecte `range(
 
 Al codi solució també us ensenyem una manera de llegir una matriu en una sola línia de codi, amb una explicació una mica més detallada del que està fent.
 
-<details>
-    <summary><b>Codi</b></summary>
-
+<b>Codi</b>
 ```python
 from PIL import Image, ImageDraw
 
@@ -162,7 +155,6 @@ for i, x in enumerate(silueta):
 # Guardem la imatge
 img.save('output.png')
 ```
-</details>
 
 ## [Problema C2. Dues paraules](https://jutge.org/problems/P71106_ca)
 
@@ -172,9 +164,7 @@ Per resoldre el problema, iterem pels caràcters de $s$, guardant-nos l'índex $
 
 Al final, obtindrem una solució vàlida si $j$ és igual a la mida de $t$ (ja que això indica que hem emparellat tots els caràcters de $t$).
 
-<details>
-    <summary><b>Codi (C++)</b></summary>
-
+<b>Codi (C++)</b>
 ```cpp
 #include <iostream>
 using namespace std;
@@ -202,26 +192,20 @@ int main() {
     }
 }
 ```
-</details>
 
 ## [Problema G2. Pedra, paper, tisores](https://jutge.org/problems/P80812_ca)
 
 x
 
-<details>
-    <summary><b>Codi</b></summary>
-
+<b>Codi</b>
 ```python
 ```
-</details>
 
 ## [Problema Q2. Moda del triangle de Pascal](https://jutge.org/problems/P57403_ca)
 
 x
 
-<details>
-    <summary><b>Codi (C++)</b></summary>
-
+<b>Codi (C++)</b>
 ```cpp
 #include<iostream>
 #include<vector>
@@ -262,7 +246,6 @@ int main() {
     cout << "El nombre que apareix més vegades és el " << solucio << ", que apareix " << ocurrencies[solucio] << " vegades.\n";
 }
 ```
-</details>
 
 ## [Problema C3. Nombres de Hamming](https://jutge.org/problems/P24627_ca)
 
@@ -274,9 +257,7 @@ Per calcular els nombres de Hamming, es comença amb una cua de prioritats `pq` 
 
 En Python, les cues de prioritat es troben al mòdul `heapq`, documentat a https://docs.python.org/3/library/heapq.html. EL programa següent implementa l'algorisme descrit:
 
-<details>
-    <summary><b>Codi (Python3)</b></summary>
-
+<b>Codi (Python3)</b>
 ```python
 from yogi import *
 from heapq import *
@@ -295,15 +276,12 @@ while c < n:
         heappush(pq, 5 * x)
 print(x)
 ```
-</details>
 
 ## [Problema Q3. Conjectura d'Euler](https://jutge.org/problems/P80756_ca)
 
 x
 
-<details>
-    <summary><b>Codi (C++)</b></summary>
-
+<b>Codi (C++)</b>
 ```cpp
 #include<bits/stdc++.h>
 using namespace std;
@@ -374,7 +352,6 @@ int main() {
     }
 }
 ```
-</details>
 
 ## [Problema G3. Mastermind (2)](https://jutge.org/problems/P36841_ca)
 
@@ -383,9 +360,7 @@ i tot, es poden generar les $4^6$ configuracions amb quatre bucles anidats.
 
 Per a cada configuració, el codi primer comprova les pistes negres i després les pistes blanques, ignorant les posicions que s'hagin fet servir prèviament per a les pistes negres. Si les $2n$ respostes són totes coherents, la variable `ok` queda a `True` i hem trobat la solució. El programa ara podria parar de buscar solucions perquè l'enunciat ens garanteix que és única, però no cal perquè el Jutge doni un AC.
 
-<details>
-    <summary><b>Codi</b></summary>
-
+<b>Codi</b>
 ```python
 from PIL import Image, ImageDraw
 
@@ -454,7 +429,6 @@ for j in range(4):
 
 img.save("output.png")
 ```
-</details>
 
 ## [Problema C4. Selectivitat](https://jutge.org/problems/P50335_ca)
 
@@ -550,9 +524,7 @@ def escriure_notes_de_tall(titulacions: list[Titulacio]) -> None:
 
 El programa complet és el següent:
 
-<details>
-    <summary><b>Codi (Python3)</b></summary>
-
+<b>Codi (Python3)</b>
 ```python
 from yogi import read
 from dataclasses import dataclass
@@ -630,15 +602,12 @@ def main() -> None:
 if __name__ == '__main__':
     main()
 ```
-</details>
 
 ## [Problema Q4. Amazones pacífiques](https://jutge.org/problems/P61195_ca)
 
 La solució esperada és un backtracking que calculi el nombre demanat. No cal fer cap optimització especialment astuta, com ara aprofitar simetries, perquè el programa només triga uns pocs segons.
 
-<details>
-    <summary><b>Codi (C++)</b></summary>
-
+<b>Codi (C++)</b>
 ```cpp
  #include <iostream>
 #include <vector>
@@ -689,17 +658,13 @@ int main() {
    cout << f(0) << endl;
 }
 ```
-</details>
 
 ## [Problema C5. Fent els nombres iguals](https://jutge.org/problems/P54072_ca)
 
 La clau d'aquest problema és veure que la suma i el màxim comú divisor de tots els nombres no canvia quan fem un moviment. En el cas de la suma, és fàcil veure-ho, ja que esborrem un element amb valor $y$ i afegim dos elements amb valors $x$ i $y-x$.
 
 
-
-<details>
-    <summary><b>Codi (C++)</b></summary>
-
+<b>Codi (C++)</b>
 ```cpp
 #include<bits/stdc++.h>
 using namespace std;
@@ -722,11 +687,8 @@ int main() {
     }
 }
 ```
-</details>
 
-<details>
-    <summary><b>Codi (Python3)</b></summary>
-
+<b>Codi (Python3)</b>
 ```python
 from easyinput import read
 
@@ -746,8 +708,6 @@ while n is not None:
     print(ans)
     n = read(int)
 ```
-</details>
-
 
 ## [Problema C6. Interval cíclic](https://jutge.org/problems/P72067_ca)
 
@@ -773,9 +733,7 @@ Utilitzem la tècnica dels 2 punters. Iterem pels valors possibles de $r$ (de $0
 Complexitat total: $\mathcal{O}(n)$.
 </details>
  
-<details>
-  <summary><b>Codi puntuació parcial (C++)</b></summary>
-
+<b>Codi puntuació parcial (C++)</b>
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -823,8 +781,6 @@ int main() {
     }
 }
 ```
-</details>
-
 
 Si tenim nombres negatius, no podem utilitzar cap dels dos mètodes del cas anterior, ja que ara el valor de $l$ òptim pot disminuir a mesura que augmentem la $r$. Ho podem resoldre utilitzant l'estructura `map` de la llibreria estàndard de C++. Iterem per tots els valors possibles de $r$ (de $0$ a $2n-1$), i ens guardem les sumes parcials $p_i := a_0 + \dots + a_i$ per les $i$ que ja hem passat en un mapa, de manera que $\text{mapa}[x]$ contingui el màxim índex $i < r$ tal que $p_i = x$. Llavors, a cada $r$ hem de comprovar si existeix un $l$ tal que $a_l + \dots + a_r = s$, és a dir, si tenim el valor $x = p_r - s$ guardat al mapa. 
 
@@ -832,9 +788,7 @@ Observem que la solució només serà vàlida si $r - \text{mapa}[x] \leq n$, ja
 
 Tant afegir o modificar un element com buscar si una clau està present té cost $\mathcal{O}(\log n)$ en un `map`, on $n$ és el nombre d'elements que hi ha al mapa, així que la complexitat total de l'algorisme és $\mathcal{O}(n \log n)$.
 
-<details>
-  <summary><b>Codi puntuació total (C++)</b></summary>
-
+<b>Codi puntuació total (C++)</b>
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
@@ -876,7 +830,6 @@ int main() {
     }
 }
 ```
-</details>
 
 ## [Problema G4. Importància de les caselles](https://jutge.org/problems/P24979_ca)
 
@@ -884,9 +837,7 @@ La solució esperada fa dos recorreguts en amplada (BFS), un des de I i l'altre 
 
 Llavors, per $(x, y)$ passa algun camí mínim si i només si `D1[x][y] + D2[x][y] = d`. A més, el nombre de camins mínims que passen per $(x, y)$ és `R1[x][y]*R2[x][y]`.
 
-<details>
-    <summary><b>Codi</b></summary>
-
+<b>Codi</b>
 ```python
 from easyinput import read
 from PIL import Image, ImageDraw
@@ -985,4 +936,3 @@ for i in range(n):
 
 img.save("output.png")
 ```
-</details>
