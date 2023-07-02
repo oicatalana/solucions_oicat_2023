@@ -203,7 +203,16 @@ x
 
 ## [Problema Q2. Moda del triangle de Pascal](https://jutge.org/problems/P57403_ca)
 
-x
+Ens demanen calcular quin nombre entre 2 i 10.000 apareix més vegades al triangle de Pascal. Sabem que el $k$-èssim nombre de la fila $n$-èssima correspon al coeficient binomial
+$$
+\binom{n}{k} = \frac{n!}{k!(n-k)!} = \frac{n \cdot (n-1) \cdot \cdots \cdot (n-k+1)}{k!}
+$$
+
+En particular, tenim que les files són simètriques respecte al centre (ja que $\binom{n}{k} = \binom{n}{n-k}$) i que els dos primers termes de la fila $n$-èssima seran $\binom{n}{0} = 1$ i $\binom{n}{1} = n$. A més, a partir de l'expressió dels coeficients binomials podem veure que els nombres de cada fila van creixent fins a arribar al centre (a partir del qual comencen a decréixer).
+
+Per tant, en tenim prou de calcular els nombres de les 10.000 primeres files, i per cada fila podem parar un cop trobem un nombre més gran que 10.000. Donat que els coeficients binomials creixen molt ràpidament, l'algorisme anterior calcularà molts pocs termes de cada fila per a $n$ grans.
+
+Per calcular els coeficients binomials, podem multiplicar primer $n \cdot (n-1) \cdot \cdots \cdot (n-k+1)$ i dividir per $k!$. Al fer-ho, hem d'anar en compte de no tenir un *sobreeiximent* (en anglès, *overflow*), és a dir, de no passar-se del valor màxim d'un enter en C++, ja que llavors la variable passa a contenir un valor negatiu, i els càlculs ja no serien correctes. Per al tipus de variable `long long int`, el valor màxim és aproximadament de $9\cdot 10^{18}$, així que en el codi següent comprovem que mai no tinguem un valor més gran de $10^{14}$ (ja que com a màxim ho multiplicarem per $10^4$, així que no ens passarem de $10^{18}$).  
 
 <b>Codi (C++)</b>
 ```cpp
@@ -215,7 +224,7 @@ using ll = long long;
 
 int main() {
     int N = 10000;
-    ll LIMIT_OVERFLOW = 1e14; // si cap dels resultats intermitjos no es passen d'aquest nombre, sabem que podem multiplicar per qualsevol nombre de 1 fins a 10^4 sense passar-nos del valor màxim d'un long long (al voltant de 9*10^18).
+    ll const LIMIT_OVERFLOW = 1e14; // si cap dels resultats intermitjos no es passen d'aquest nombre, sabem que podem multiplicar per qualsevol nombre de 1 fins a 10^4 sense passar-nos del valor màxim d'un long long (al voltant de 9*10^18).
     vector<int> ocurrencies(N+1, 0);
 
     for(int n = 0; n <= N; ++n) {
