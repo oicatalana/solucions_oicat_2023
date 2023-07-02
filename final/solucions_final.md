@@ -23,8 +23,7 @@ Observeu que en una solució òptima només s'utilitza un dels dos botons (perqu
 
 Si escollim el botó que baixa el volum, l'haurem de prémer tantes vegades com el residu de dividir $x$ per $k$ (`x % k` en la majoria de llenguatges de programació). Si escollim el botó que puja el volum, l'haurem de prémer `k - (x % k)` vegades. Per tant, la solució serà el mínim d'aquests dos valors.
 
-<details>
-  <summary><b>Codi (C++)</b></summary>
+<b>Codi (C++)</b>
 
 ```cpp
 #include <iostream>
@@ -39,10 +38,7 @@ int main() {
 }
 ```
 
-</details>
-
-<details>
-    <summary><b>Codi (Python3)</b></summary>
+<b>Codi (Python3)</b>
 
 ```python
 from easyinput import read
@@ -52,9 +48,8 @@ while x is not None:
     print(min(residu, k - residu))
     x, k = read(int,int) # llegim l'entrada per a la propera iteració del bucle.
 ```
-</details>
 
-## [Problema Q1. Nombres molt divisibles](https://jutge.org/problems/P89047_ca) <a name="Q1"/>
+## [Problema Q1. Nombres molt divisibles](https://jutge.org/problems/P89047_ca)
 
 Per resoldre el problema, iterem per tots els nombres de 1 fins a 2023, calculant per cadascun la suma dels dígits i la suma dels quadrats dels dígits, i comprovant si divideixen al nombre original. Podem declarar un comptador a fora del bucle i sumar-li 1 cada cop que trobem una solució vàlida. Al final del bucle, el valor del comptador es correspondrà al nombre de solucions.
 
@@ -88,7 +83,7 @@ int main() {
 ```
 </details>
 
-## [Problema G1. Silueta urbana](https://jutge.org/problems/P90013_ca) <a name="G1"></a>
+## [Problema G1. Silueta urbana](https://jutge.org/problems/P90013_ca)
 
 Per resoldre aquest problema ens és suficient amb trobar, depenent de per quin costat estem mirant, el màxim element de cada fila o columna, i a continuació dibuixar les columnes corresponents en l'ordre adequat, com sempre anant amb compte de no posar una columna o fila de píxels de més.
 
@@ -169,7 +164,7 @@ img.save('output.png')
 ```
 </details>
 
-## [Problema C2. Dues paraules](https://jutge.org/problems/P71106_ca) <a name="C2"></a>
+## [Problema C2. Dues paraules](https://jutge.org/problems/P71106_ca)
 
 Donades dues strings $s$ i $t$, volem veure si podem transformar $s$ en $t$ eliminant algunes de les lletres de $s$. Observeu que amb les eliminacions no podem canviar l'ordre relatiu de les lletres, així que la resposta serà `SI` si tots els caràcters de $t$ apareixen en el mateix ordre a $s$, possiblement amb alguns caràcters extra pel mig.
 
@@ -209,7 +204,7 @@ int main() {
 ```
 </details>
 
-## [Problema G2. Pedra, paper, tisores](https://jutge.org/problems/P80812_ca) <a name="G2"></a>
+## [Problema G2. Pedra, paper, tisores](https://jutge.org/problems/P80812_ca)
 
 x
 
@@ -220,7 +215,7 @@ x
 ```
 </details>
 
-## [Problema Q2. Moda del triangle de Pascal](https://jutge.org/problems/P57403_ca) <a name="Q2"></a>
+## [Problema Q2. Moda del triangle de Pascal](https://jutge.org/problems/P57403_ca)
 
 x
 
@@ -236,7 +231,7 @@ using ll = long long;
 
 int main() {
     int N = 10000;
-    ll LIMIT_OVERFLOW = 1e14; // si cap dels resultats intermitjos no es passen d'aquest nombre, sabem que podem multiplicar per qualsevol nombre de 1 fins a 10^4 sense passar-nos del valor màxim d'un long long (al voltant de 4*10^18).
+    ll LIMIT_OVERFLOW = 1e14; // si cap dels resultats intermitjos no es passen d'aquest nombre, sabem que podem multiplicar per qualsevol nombre de 1 fins a 10^4 sense passar-nos del valor màxim d'un long long (al voltant de 9*10^18).
     vector<int> ocurrencies(N+1, 0);
 
     for(int n = 0; n <= N; ++n) {
@@ -269,7 +264,7 @@ int main() {
 ```
 </details>
 
-## [Problema C3. Nombres de Hamming](https://jutge.org/problems/P24627_ca) <a name="C3"></a>
+## [Problema C3. Nombres de Hamming](https://jutge.org/problems/P24627_ca)
 
 Una possible manera de calcular els nombres de Hamming és utilitzant una *cua de prioritats*.
 
@@ -302,7 +297,7 @@ print(x)
 ```
 </details>
 
-## [Problema Q3. Conjectura d'Euler](https://jutge.org/problems/P80756_ca) <a name="Q3"></a>
+## [Problema Q3. Conjectura d'Euler](https://jutge.org/problems/P80756_ca)
 
 x
 
@@ -381,7 +376,7 @@ int main() {
 ```
 </details>
 
-## [Problema G3. Mastermind (2)](https://jutge.org/problems/P36841_ca) <a name="G3"></a>
+## [Problema G3. Mastermind (2)](https://jutge.org/problems/P36841_ca)
 
 Amb les restriccions donades, n'hi ha prou de fer un programa de força bruta que consideri totes les possibles configuracions, i comprovar per a cadascuna si és consistent amb les respostes a les conjectures. Fins
 i tot, es poden generar les $4^6$ configuracions amb quatre bucles anidats.
@@ -461,7 +456,7 @@ img.save("output.png")
 ```
 </details>
 
-## [Problema C4. Selectivitat](https://jutge.org/problems/P50335_ca) <a name="C4"></a>
+## [Problema C4. Selectivitat](https://jutge.org/problems/P50335_ca)
 
 Per resoldre aquest problema cal descompondre adientment les dades i les operacions que cal realitzar sobre elles. A continuació es descriu una solució al problema utilitzant Python amb tipus.
 
@@ -637,7 +632,7 @@ if __name__ == '__main__':
 ```
 </details>
 
-## [Problema Q4. Amazones pacífiques](https://jutge.org/problems/P61195_ca) <a name="Q4"></a>
+## [Problema Q4. Amazones pacífiques](https://jutge.org/problems/P61195_ca)
 
 La solució esperada és un backtracking que calculi el nombre demanat. No cal fer cap optimització especialment astuta, com ara aprofitar simetries, perquè el programa només triga uns pocs segons.
 
@@ -696,7 +691,7 @@ int main() {
 ```
 </details>
 
-## [Problema C5. Fent els nombres iguals](https://jutge.org/problems/P54072_ca) <a name="C5"></a>
+## [Problema C5. Fent els nombres iguals](https://jutge.org/problems/P54072_ca)
 
 La clau d'aquest problema és veure que la suma i el màxim comú divisor de tots els nombres no canvia quan fem un moviment. En el cas de la suma, és fàcil veure-ho, ja que esborrem un element amb valor $y$ i afegim dos elements amb valors $x$ i $y-x$.
 
@@ -754,7 +749,7 @@ while n is not None:
 </details>
 
 
-## [Problema C6. Interval cíclic](https://jutge.org/problems/P72067_ca) <a name="C6"></a>
+## [Problema C6. Interval cíclic](https://jutge.org/problems/P72067_ca)
 
 La primera observació que s'ha de fer és que el fet que el interval sigui cíclic no complica gaire el problema, ja que un interval que "dona la volta" és simplement la unió d'un prefix i un sufix (que siguin disjunts). Alternativament, podem duplicar la seqüència de nombres que ens donen, de manera que tot interval cíclic de la seqüència original es correspon amb un interval "normal" de la seqüència duplicada. Si fem això hem d'anar amb compte que la longitud de l'interval que donem com a solució mai sigui més gran que $n$, ja que llavors estaríem sumant algun dels elements més d'una vegada.
 
@@ -883,7 +878,7 @@ int main() {
 ```
 </details>
 
-## [Problema G4. Importància de les caselles](https://jutge.org/problems/P24979_ca) <a name="G4"></a>
+## [Problema G4. Importància de les caselles](https://jutge.org/problems/P24979_ca)
 
 La solució esperada fa dos recorreguts en amplada (BFS), un des de I i l'altre des de F. Sigui $d$ la distància mínima entre I i F. Per a cada posició $(x, y)$, sigui `D1[x][y]` la mínima distància des de I a $(x, y)$, sigui `R1[x][y]` el nombre de camins mínims que arriben a $(x, y)$ des de I, i siguin `D2[x][y]` i `R2[x][y]` les mateixes quantitats però des de F.
 
