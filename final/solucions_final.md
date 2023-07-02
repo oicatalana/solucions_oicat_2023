@@ -195,10 +195,50 @@ int main() {
 
 ## [Problema G2. Pedra, paper, tisores](https://jutge.org/problems/P80812_ca)
 
-x
+Podem resoldre aquest problema simulant el procés descrit $t$ vegades. A cada iteració, fem una còpia de la graella per tal que, al modificar-la, no alterem la graella original. És important saber que no podem fer `nova_graella = graella`, ja que llavors Python no farà una còpia, sinó que els canvis a la nova graella també afectaran a la graella original. Per resoldre-ho, es pot copiar fila a fila amb `nova_graella = [graella[i] for i in range(n)]`, o utilitzar la funció `deepcopy`. 
+
+Una altra diferència important amb C/C++ és que l'operador residu `a%b` retorna valors positius sempre que `b` sigui positiu, així que per calcular la fila anterior podem fer `(fila-1) % n` sense preocupar-nos del cas on `fila = 0`.
 
 <b>Codi</b>
 ```python
+from PIL import Image, ImageDraw
+from easyinput import read
+from copy import deepcopy
+
+n, m, t = read(int, int, int)
+graella = [[read(chr) for _ in range(m)] for _ in range(n)]
+lletres = "RPS"
+lletra_a_index = {"R" : 0, "P" : 1, "S" : 2}
+color = {"R" : "Red", "P" : "Green", "S" : "Blue"}
+
+dfila = [-1, -1, -1, 0, 1, 1, 1, 0]
+dcol = [1, 0, -1, -1, -1, 0, 1, 1]
+
+for _ in range(t):
+    nou_graella = deepcopy(graella)
+    for fila in range(n):
+        for col in range(m):
+            enemics = 0
+            lletra_actual = graella[fila][col]
+            lletra_enemiga = lletres[(lletra_a_index[lletra_actual] + 1) % 3]
+            for k in range(8):
+                if graella[(fila + dfila[k]) % n][(col + dcol[k]) % m] == lletra_enemiga:
+                    enemics += 1
+            if enemics >= 3:
+                nou_graella[fila][col] = lletra_enemiga
+            else:
+                nou_graella[fila][col] = lletra_actual
+    graella = nou_graella
+
+img = Image.new('RGB', [10*m, 10*n], 'White')
+dib = ImageDraw.Draw(img)
+
+for fila in range(n):
+    for col in range(m):
+        dib.polygon([(10*col, 10*fila), (10*col + 9, 10*fila), (10*col + 9, 10*fila + 9), (10*col, 10*fila + 9)], color[graella[fila][col]])
+
+# Guardem la imatge
+img.save('output.png')
 ```
 
 ## [Problema Q2. Moda del triangle de Pascal](https://jutge.org/problems/P57403_ca)
@@ -209,7 +249,7 @@ $$\binom{n}{k} = \frac{n!}{k!(n-k)!} = \frac{n \cdot (n-1) \cdot \cdots \cdot (n
 
 En particular, tenim que les files són simètriques respecte al centre (ja que $\binom{n}{k} = \binom{n}{n-k}$) i que els dos primers termes de la fila $n$-èssima seran $\binom{n}{0} = 1$ i $\binom{n}{1} = n$. A més, a partir de l'expressió dels coeficients binomials podem veure que els nombres de cada fila van creixent fins a arribar al centre (a partir del qual comencen a decréixer).
 
-Per tant, en tenim prou de calcular els nombres de les 10.000 primeres files, i per cada fila podem parar un cop trobem un nombre més gran que 10.000. Donat que els coeficients binomials creixen molt ràpidament, l'algorisme anterior calcularà molts pocs termes de cada fila per a $n$ grans.
+Per tant, en tenim prou amb calcular els nombres de les 10.000 primeres files, i per cada fila podem parar un cop trobem un nombre més gran que 10.000. Donat que els coeficients binomials creixen molt ràpidament, l'algorisme anterior calcularà molts pocs termes de cada fila per a $n$ grans.
 
 Per calcular els coeficients binomials, podem multiplicar primer $n \cdot (n-1) \cdot \cdots \cdot (n-k+1)$ i dividir per $k!$. Al fer-ho, hem d'anar en compte de no tenir un *sobreeiximent* (en anglès, *overflow*), és a dir, de no passar-se del valor màxim d'un enter en C++, ja que llavors la variable passa a contenir un valor negatiu, i els càlculs ja no serien correctes. Per al tipus de variable `long long int`, el valor màxim és aproximadament de $9\cdot 10^{18}$, així que en el codi següent comprovem que mai no tinguem un valor més gran de $10^{14}$ (ja que com a màxim ho multiplicarem per $10^4$, així que no ens passarem de $10^{18}$).  
 
