@@ -205,9 +205,7 @@ x
 
 Ens demanen calcular quin nombre entre 2 i 10.000 apareix més vegades al triangle de Pascal. Sabem que el $k$-èssim nombre de la fila $n$-èssima correspon al coeficient binomial
 
-$
-\binom{n}{k} = \frac{n!}{k!(n-k)!} = \frac{n \cdot (n-1) \cdot \cdots \cdot (n-k+1)}{k!}
-$
+$$\binom{n}{k} = \frac{n!}{k!(n-k)!} = \frac{n \cdot (n-1) \cdot \cdots \cdot (n-k+1)}{k!}$$
 
 En particular, tenim que les files són simètriques respecte al centre (ja que $\binom{n}{k} = \binom{n}{n-k}$) i que els dos primers termes de la fila $n$-èssima seran $\binom{n}{0} = 1$ i $\binom{n}{1} = n$. A més, a partir de l'expressió dels coeficients binomials podem veure que els nombres de cada fila van creixent fins a arribar al centre (a partir del qual comencen a decréixer).
 
