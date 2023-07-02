@@ -1,3 +1,22 @@
+# Solucions Final OICat 2023
+
+## Taula de continguts
+* [Problema C1. Comandament de televisió](#C1)
+* [Problema Q1. Nombres molt divisibles](#Q1)
+* [Problema G1. Silueta urbana](#G1)
+* [Problema C2. Dues paraules](#C2)
+* [Problema G2. Pedra, paper, tisores](#G2)
+* [Problema Q2. Moda del triangle de Pascal](#Q2)
+* [Problema C3. Nombres de Hamming](#C3)
+* [Problema Q3. Conjectura d'Euler](#Q3)
+* [Problema G3. Mastermind (2)](#G3)
+* [Problema C4. Selectivitat](#C4)
+* [Problema Q4. Amazones pacífiques](#Q4)
+* [Problema C5. Fent els nombres iguals](#C5)
+* [Problema C6. Interval cíclic](#C6)
+
+
+
 ## [Problema C1. Comandament de televisió](https://jutge.org/problems/P12029_ca) <a name="C1"></a>
 
 Observeu que en una solució òptima només s'utilitza un dels dos botons (perquè prémer una vegada cada botó és equivalent a no prémer res).
