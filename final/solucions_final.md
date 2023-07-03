@@ -713,7 +713,11 @@ int main() {
 
 ## [Problema C5. Fent els nombres iguals](https://jutge.org/problems/P54072_ca)
 
-La clau d'aquest problema és veure que la suma i el màxim comú divisor de tots els nombres no canvia quan fem un moviment. En el cas de la suma, és fàcil veure-ho, ja que esborrem un element amb valor $y$ i afegim dos elements amb valors $x$ i $y-x$.
+La clau d'aquest problema és veure que la suma i el màxim comú divisor de tots els nombres no canvia quan fem un moviment (és a dir, són una *invariant*). En el cas de la suma, és fàcil veure-ho, ja que esborrem un element amb valor $y$ i afegim dos elements amb valors $x$ i $y-x$. Pel màxim comú divisor, observeu que quan $y > x$ tenim que $\text{mcd}(x, y) = \text{mcd}(x, y-x)$ (en això es basa de fet l'algorisme d'Euclides que s'utilitza habitualment per calcular el mcd). 
+
+Sigui $S$ la suma de tots els nombres a l'inici i $g$ el màxim comú divisor. A l'acabar el procés, quan tots els nombres siguin iguals, el seu màxim comú divisor ha de continuar sent $g$, de manera que tots els nombres han de ser iguals a $g$. Llavors la suma final serà $g \cdot (n + t)$, on $t$ és el nombre de torns, perquè a cada torn estem afegint un nombre més. Però havíem vist que la suma no canviava, de manera que
+
+$ S = g \cdot (n + t) \implies t = S/g - n$
 
 
 <b>Codi (C++)</b>
