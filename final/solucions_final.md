@@ -327,7 +327,7 @@ print(x)
 
 ## [Problema Q3. Conjectura d'Euler](https://jutge.org/problems/P80756_ca)
 
-x
+Per resoldre aquest problema, iterem per tots els possibles valors dels $a_i$ i comprovem per cada un si la suma de les potències $k$-èssimes és també una potència $k$-èssima. Per fer que el programa vagi raonablement ràpid, podem considerar només els vectors $a_i$ ordenats, és a dir, amb $a_i \leq a_{i+1}$ per a tot $i$. Comprovant per a $a_i$'s fins a 250, el codi següent triga menys d'un minut.
 
 <b>Codi (C++)</b>
 ```cpp
@@ -345,56 +345,60 @@ ll potencia(ll b, ll e) {
     return ans;
 }
 
+vector<int> a;
+int N = 250; // Màxim valor d'un dels a_i.
+int k; // Exponent.
+
+// Comprova si el vector 'a' actual es una solució correcta. 
+// En cas que sí, l'escriu per la terminal.
+void comprova() {
+    int n = a.size();
+    ll sum = 0;
+    for(int i = 0; i < n; ++i) {
+        sum += potencia(a[i], k);
+    }
+    if(potencia(N, k) < sum) return;
+
+    // Fem cerca binària per trobar l'arrel k-èssima de la suma de potències.
+    int esq = 0; // Invariant: esq < sum^(1/k)
+    int dre = N; // Invariant: dre >= sum^(1/k)
+    while(dre - esq > 1) {
+        int mid = (esq + dre) / 2;
+        if(potencia(mid, k) < sum) esq = mid;
+        else dre = mid;
+    }
+
+    // Si és una solució vàlida, l'escrivim per pantalla.
+    if(potencia(dre, k) == sum) {
+        cout << "Solució: ";
+        for(int i = 0; i < n; ++i) {
+            cout << a[i] << "^" << k;
+            if(i != n-1) cout << " + ";
+            else cout << " = " << dre << "^" << k << " = " << sum << endl;
+        }
+    }
+}
+
+// Omple el vector 'a' a partir de la posició 'pos', de manera no decreixent (és a dir, a[i] <= a[i+1] per tot i).
+void genera_totes_possibilitats(int pos) {
+    int n = a.size();
+    if(pos == n) return comprova();
+    int last = pos == 0? 1 : a[pos-1];
+    for(int i = last; i <= N; ++i) {
+        a[pos] = i;
+        genera_totes_possibilitats(pos + 1);
+    }
+};
+
 // Troba solucions enteres positives a:
 // a_1^k + ... + a_n^k = b^k,   on 3 <= k <= 5,  2 <= n < k,  1 <= a_i, b <= N.
 int main() {
-    int N = 250; // Màxim valor d'un dels a_i.
     int max_pow = 5; // Màxim valor de l'exponent.
-    for(int k = 3; k <= max_pow; ++k) {
+    for(k = 3; k <= max_pow; ++k) {
         for(int n = 2; n < k; ++n) {
-            // Busquem solucions enteres positives a:
+            // Busquem solucions enteres positives de:
             // a_1^k + ... + a_n^k = b^k
-            vector<int> a(n);
-
-            // Comprova si el vector 'a' actual es una soluciós correcta. 
-            // En cas que sí, l'escriu per la terminal.
-            function<void()> comprova = [&](){
-                ll sum = 0;
-                for(int i = 0; i < n; ++i) {
-                    sum += potencia(a[i], k);
-                }
-                if(potencia(N, k) < sum) return;
-
-                // Fem cerca binària per trobar l'arrel k-èssima de la suma de potències.
-                int esq = 0; // Invariant: esq < sum^(1/k)
-                int dre = N; // Invariant: dre >= sum^(1/k)
-                while(dre - esq > 1) {
-                    int mid = (esq + dre) / 2;
-                    if(potencia(mid, k) < sum) esq = mid;
-                    else dre = mid;
-                }
-
-                // Si és una solució vàlida, l'escrivim per pantalla.
-                if(potencia(dre, k) == sum) {
-                    cout << "Solució: ";
-                    for(int i = 0; i < n; ++i) {
-                        cout << a[i] << "^" << k;
-                        if(i != n-1) cout << " + ";
-                        else cout << " = " << dre << "^" << k << " = " << sum << endl;
-                    }
-                }
-            };
-
-            // Omple el vector 'a' a partir de la posició 'pos', de manera no decreixent (és a dir, a[i] <= a[i+1] per tot i).
-            function<void(int)> genera_totes_possibilitats = [&](int pos) {
-                if(pos == n) return comprova();
-                int last = pos == 0? 1 : a[pos-1];
-                for(int i = last; i <= N; ++i) {
-                    a[pos] = i;
-                    genera_totes_possibilitats(pos + 1);
-                }
-            };
-
+            a = vector<int>(n);
             genera_totes_possibilitats(0);
         }
     }
