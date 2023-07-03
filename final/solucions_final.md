@@ -14,6 +14,7 @@
 * [Problema Q4. Amazones pacífiques](#Q4)
 * [Problema C5. Fent els nombres iguals](#C5)
 * [Problema C6. Interval cíclic](#C6)
+* [Problema G4. Importància de les caselles](#G4)
 
 
 
